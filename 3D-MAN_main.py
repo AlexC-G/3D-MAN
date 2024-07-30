@@ -202,10 +202,7 @@ def test_one_epoch(args, net, test_loader):
     
             itr+=1  
             batch_idx +=1
-    
-    	# computing percentage of incorrect point correspondences
-        # incorrect_correspondences =   (1 - total_correct_pred/(num_examples*num_points))*100
-        
+      
         rotations_ab = np.concatenate(rotations_ab, axis=0)
         translations_ab = np.concatenate(translations_ab, axis=0)
         rotations_ab_pred = np.concatenate(rotations_ab_pred, axis=0)
@@ -271,10 +268,8 @@ def train_one_epoch(args, net, train_loader, opt):
         target = target.transpose(2,1).to(args.device)
         src = src.transpose(2,1).to(args.device)
         igt = igt.to(args.device)
-        # col_idx = col_idx.cuda()
-        # corr_mat_ab = corr_mat_ab.cuda()
-        
-        batch_size = src.size(0)
+
+	batch_size = src.size(0)
         num_points = src.size(-1)
         num_points_target = target.size(-1)
         
@@ -340,18 +335,6 @@ def train_one_epoch(args, net, train_loader, opt):
             loss_chamfer = ChamferDistanceLoss()(target.transpose(2, 1), transformed_src.transpose(2, 1))
         else:
             raise Exception ("please verify the input loss function")
-
-
-
-#         if args.cycle:
-#             raise Exception ("cycle for corr_mat_ab not implemented yet")
-#             rotation_loss = F.mse_loss(torch.matmul(rotation_ba_pred, rotation_ab_pred), identity.clone())
-#             translation_loss = torch.mean((torch.matmul(rotation_ba_pred.transpose(2, 1),
-# 														translation_ab_pred.view(batch_size, 3, 1)).view(batch_size, 3)
-# 										   + translation_ba_pred) ** 2, dim=[0, 1])
-#             cycle_loss = rotation_loss + translation_loss
-
-#             loss = loss + cycle_loss * 0.1
 		 
         loss.backward()
         opt.step()
@@ -360,18 +343,7 @@ def train_one_epoch(args, net, train_loader, opt):
         total_loss_dcp_t += loss_dcp_t.item() * batch_size
         total_cycle_loss += loss_chamfer.item() * batch_size
 
-
-# 		gt_idx = torch.argmax(corr_mat_ab.transpose(1,2).reshape(-1,num_points_target),axis =1) # ground-truth index of the corresponding target point 
-# 		pred_idx = torch.argmax(corr_mat_ab_pred.view(-1,num_points_target),axis =1) # predicted index of the corresponding target point 
-
-# 		# if the indices match, then the predicted corresponding target point is correct
-# 		correct_pred_idx=torch.where(gt_idx-pred_idx ==0)
-# 		total_correct_pred += len(correct_pred_idx[0])
-		
-        # if args.cycle:
-        #     total_cycle_loss = total_cycle_loss + cycle_loss.item() * 0.1 * batch_size
-
-        try:
+	try:
             mse_ab +=  torch.mean((transformed_src - target) ** 2, dim=[0, 1, 2]).item() * batch_size
             mae_ab += torch.mean(torch.abs(transformed_src - target), dim=[0, 1, 2]).item() * batch_size
             mse_ba += torch.mean((transformed_target - src) ** 2, dim=[0, 1, 2]).item() * batch_size
@@ -384,10 +356,6 @@ def train_one_epoch(args, net, train_loader, opt):
 
         itr+=1  
        
-	# computing percentage of incorrect point correspondences
-# 	incorrect_correspondences =   (1 - total_correct_pred/(num_examples*num_points))*100
-
-    # print(total_loss_dcp_rot* 1.0 / num_examples)
     rotations_ab = np.concatenate(rotations_ab, axis=0)
     translations_ab = np.concatenate(translations_ab, axis=0)
     rotations_ab_pred = np.concatenate(rotations_ab_pred, axis=0)
@@ -471,16 +439,6 @@ def train(args, net, train_loader, test_loader, boardio, textio):
     best_test_t_rmse_ab = np.inf
     best_test_t_mae_ab = np.inf
 
-# 	best_test_mse_ba = np.inf
-# 	best_test_rmse_ba = np.inf
-# 	best_test_mae_ba = np.inf
-
-# 	best_test_r_mse_ba = np.inf
-# 	best_test_r_rmse_ba = np.inf
-# 	best_test_r_mae_ba = np.inf
-# 	best_test_t_mse_ba = np.inf
-# 	best_test_t_rmse_ba = np.inf
-# 	best_test_t_mae_ba = np.inf
 
     for epoch in range(args.epochs):
 		
@@ -497,9 +455,6 @@ def train(args, net, train_loader, test_loader, boardio, textio):
         test_translations_ba_pred, test_eulers_ab, test_eulers_ba, mse, mae, chamfer, _ = test_one_epoch(args, net, test_loader)
         train_rmse_ab = np.sqrt(train_mse_ab)
         test_rmse_ab = np.sqrt(test_mse_ab)
-
-# 		train_rmse_ba = np.sqrt(train_mse_ba)
-# 		test_rmse_ba = np.sqrt(test_mse_ba)
         
         train_error_euler_angles_ab = error_rotmat_angles(train_rotations_ab_pred, train_rotations_ab)
         # train_error_euler_angles_ab = train_rotations_ab_pred-train_rotations_ab#error_euler_angles(train_rotations_ab_pred.transpose(2, 1),np.degrees(train_eulers_ab))  # computing euler angle error
