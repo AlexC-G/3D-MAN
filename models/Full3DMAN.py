@@ -225,7 +225,7 @@ class Encoder(nn.Module):
         
         self.latent_size = latent_size
         self.device = device
-        in_channels = 6
+        in_channels = 9
         out_channels = self.latent_size
         hidden_features = int(self.latent_size/3)
         Ks = [4,8]
