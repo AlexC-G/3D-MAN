@@ -44,11 +44,12 @@ Qualitative results of 3D-MAN registration in Experiment 3. Note that the method
 
 ## Citation
 This work will present in the Workshop on GRaphs in biomedicAl Image anaLysis ([GRAIL2024](https://grail-miccai.github.io/#program)) from MICCAI2024 and it will publish in the workshop proceedings volume. If you use this code or ideas from our paper, please cite our paper:<br> <br>
+* Mesh registration via geometric feature homogenization and offset cross-attention: application to 3D photogrammetry<br>
  [Inés A. Cruz-Guerrero](https://orcid.org/0000-0001-8034-8530)<sup>1</sup>,
  Connor Elkhill <sup>1</sup>,
  Jiawei Liu <sup>1</sup>,
  Phuong Nguyen <sup>2</sup>,
- Brooke French <sup>2</sup>,
+ Brooke French <sup>2</sup>, and
  Antonio R. Porras<sup>1,2,3,4</sup> <br>
 <sup>1</sup> Department of Biostatistics and Informatics, Colorado School of Public Health, University of Colorado Anschutz Medical Campus, Aurora, CO <br>
 <sup>2</sup> Department of Pediatric Plastic and Reconstructive Surgery, Children's Hospital Colorado, Aurora, CO <br>
