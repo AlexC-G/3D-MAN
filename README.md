@@ -28,7 +28,7 @@ Due to data privacy agreements, we are not able to share the 3D photograms datas
 **Input**: Two meshes in format of graphs: Target and Source. These meshes can be differet from each other, with distinct number of nodes and edges.
 
 **Output**: The mesh transformation: Rotation, Translation and Scaler.
-
+<br><br>
 ## Results:
 The results are compared to five state-of-the-art point cloud registration methods: (i) Deep Closest Point ([DCP](https://openaccess.thecvf.com/content_ICCV_2019/papers/Wang_Deep_Closest_Point_Learning_Representations_for_Point_Cloud_Registration_ICCV_2019_paper.pdf)), [PointnetLK](https://openaccess.thecvf.com/content_CVPR_2019/papers/Aoki_PointNetLK_Robust__Efficient_Point_Cloud_Registration_Using_PointNet_CVPR_2019_paper.pdf) , Deep Gaussian Mixture Registration ([DeepGMR](https://link.springer.com/chapter/10.1007/978-3-030-58558-7_43)), and Point Cloud Registration Network ([PCRnet](https://arxiv.org/pdf/1908.07906)).<br><br>
 
@@ -43,7 +43,7 @@ Qualitative registration results in Experiment 1 using the ModelNet40 dataset. S
 Qualitative results of 3D-MAN registration in Experiment 3. Note that the method uses the origi-nal mesh triangles but point clouds were used only in this figure for an improved visualization. Source and target meshes are represented in red and blue, respectively. a) Registration of two meshes from the same subject. b) Registration of two meshes from the same subject but with different scale. c) Registration of two meshes from different subjects at the same scale. d) Regis-tration of two meshes from the different subjects at different scales.<br><br>
 
 ## Acknowledgments 
-This work is supported by the National Institute of Dental & Craniofacial Research (NIDCR) of the National Institutes of Health (NIH) under Award Number R01DE032681. The content is solely the responsibility of the authors and does not necessarily represent the official views of the NIH. <br>
+This work is supported by the National Institute of Dental & Craniofacial Research (NIDCR) of the National Institutes of Health (NIH) under Award Number R01DE032681. The content is solely the responsibility of the authors and does not necessarily represent the official views of the NIH. <br><br>
 
 ## Citation
 This work will present in the Workshop on GRaphs in biomedicAl Image anaLysis ([GRAIL2024](https://grail-miccai.github.io/#program)) from MICCAI2024 and it will publish in the workshop proceedings volume. If you use this code or ideas from our paper, please cite our paper:<br> <br>
@@ -57,7 +57,7 @@ This work will present in the Workshop on GRaphs in biomedicAl Image anaLysis ([
 <sup>1</sup> Department of Biostatistics and Informatics, Colorado School of Public Health, University of Colorado Anschutz Medical Campus, Aurora, CO <br>
 <sup>2</sup> Department of Pediatric Plastic and Reconstructive Surgery, Children's Hospital Colorado, Aurora, CO <br>
 <sup>3</sup> Department of Pediatric Neurosurgery, Children’s Hospital Colorado, Aurora, CO <br>
-<sup>4</sup> Departments of Pediatrics, Surgery and Biomedical Informatics, School of Medicine, University of Colorado Anschutz Medical Campus, Aurora, CO <br>
+<sup>4</sup> Departments of Pediatrics, Surgery and Biomedical Informatics, School of Medicine, University of Colorado Anschutz Medical Campus, Aurora, CO <br><br>
 
 ```
 @INPROCEEDINGS{Cruz-Guerrero2024,
@@ -69,6 +69,7 @@ This work will present in the Workshop on GRaphs in biomedicAl Image anaLysis ([
   organization={Springer},
   doi={}}
 ```
+<br><br>
 
 ## Contact 
 If you have any questions, please email Alejandro Cruz-Guerrero at alejandro.cruzguerrero@cuanschutz.edu
