@@ -25,7 +25,7 @@ Proposed network architecture with two modules: feature homogenization and offse
 Due to data privacy agreements, we are not able to share the 3D photograms dataset and the results are sensured for privacy. All the 3D photograms were transformed to pytorch geometric graphs and saved in ".pt" format
 
 ### Quick summary
-**Input**: Two meshes in format of graphs: Target and Source.
+**Input**: Two meshes in format of graphs: Target and Source. These meshes can be differet from each other, with distinct number of nodes and edges.
 
 **Output**: The mesh transformation: Rotation, Translation and Scaler.
 
@@ -41,5 +41,29 @@ Qualitative registration results in Experiment 1 using the ModelNet40 dataset. S
 <img src='\Figures\PointCloudResults.png'> <br>
 </p>
 Qualitative results of 3D-MAN registration in Experiment 3. Note that the method uses the origi-nal mesh triangles but point clouds were used only in this figure for an improved visualization. Source and target meshes are represented in red and blue, respectively. a) Registration of two meshes from the same subject. b) Registration of two meshes from the same subject but with different scale. c) Registration of two meshes from different subjects at the same scale. d) Regis-tration of two meshes from the different subjects at different scales.<br><br>
+
+## Citation
+This work will present in the Workshop on GRaphs in biomedicAl Image anaLysis ([GRAIL2024](https://grail-miccai.github.io/#program)) from MICCAI2024 and it will publish in the workshop proceedings volume. If you use this code or ideas from our paper, please cite our paper:<br> <br>
+ [Inés A. Cruz-Guerrero](https://orcid.org/0000-0001-8034-8530)<sup>1</sup>,
+ Connor Elkhill <sup>1</sup>,
+ Jiawei Liu <sup>1</sup>,
+ Phuong Nguyen <sup>2</sup>,
+ Brooke French <sup>2</sup>,
+ Antonio R. Porras<sup>1,2,3,4</sup> <br>
+<sup>1</sup> Department of Biostatistics and Informatics, Colorado School of Public Health, University of Colorado Anschutz Medical Campus, Aurora, CO <br>
+<sup>2</sup> Department of Pediatric Plastic and Reconstructive Surgery, Children's Hospital Colorado, Aurora, CO <br>
+<sup>3</sup> Department of Pediatric Neurosurgery, Children’s Hospital Colorado, Aurora, CO <br>
+<sup>4</sup> Departments of Pediatrics, Surgery and Biomedical Informatics, School of Medicine, University of Colorado Anschutz Medical Campus, Aurora, CO <br>
+
+```
+@INPROCEEDINGS{9629708,
+  author={Inés A. Cruz-Guerrero, Connor Elkhill, Jiawei Liu, Phuong Nguyen, Brooke French, and Antonio R. Porras},
+  booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention}, 
+  title={Mesh registration via geometric feature homogenization and offset cross-attention: application to 3D photogrammetry}, 
+  year={2024},
+  note={in press},
+  organization={Springer},
+  doi={}}
+```
 
 
