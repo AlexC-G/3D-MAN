@@ -40,7 +40,7 @@ Qualitative registration results in Experiment 1 using the ModelNet40 dataset. S
 <p align="center">
 <img src='\Figures\PointCloudResults.png'> <br>
 </p>
-Qualitative results of 3D-MAN registration in Experiment 3. Note that the method uses the origi-nal mesh triangles but point clouds were used only in this figure for an improved visualization. Source and target meshes are represented in red and blue, respectively. a) Registration of two meshes from the same subject. b) Registration of two meshes from the same subject but with different scale. c) Registration of two meshes from different subjects at the same scale. d) Regis-tration of two meshes from the different subjects at different scales.<br><br>
+Qualitative results of 3D-MAN registration in Experiment 3. Note that the method uses the original mesh triangles but point clouds were used only in this figure for an improved visualization. Source and target meshes are represented in red and blue, respectively. a) Registration of two meshes from the same subject. b) Registration of two meshes from the same subject but with different scale. c) Registration of two meshes from different subjects at the same scale. d) Registration of two meshes from the different subjects at different scales.<br><br>
 
 ## Acknowledgments 
 This work is supported by the National Institute of Dental & Craniofacial Research (NIDCR) of the National Institutes of Health (NIH) under Award Number R01DE032681. The content is solely the responsibility of the authors and does not necessarily represent the official views of the NIH. <br><br>
