@@ -154,15 +154,15 @@ class StackedAttention(nn.Module):
         return x
 
 class Decoder(nn.Module):
-    def __init__(self, latent_size, ffn_hidden = 512, n_head = 4, drop_prob = 0.5):
+    def __init__(self, latent_size, ffn_hidden = 512, n_head = 4, drop_prob = 0.5, bias=True):
         super(Decoder, self).__init__()
         
         self.latent_size = latent_size
 
         self.pt_last = StackedAttention(self.latent_size)
         
-        self.dec1 = nn.Conv1d(self.latent_size*4, self.latent_size, kernel_size=1, bias=True)
-        self.dec2 = nn.Linear(self.latent_size*2 ,self.latent_size // 2, bias=True)
+        self.dec1 = nn.Conv1d(self.latent_size*4, self.latent_size, kernel_size=1, bias=bias)
+        self.dec2 = nn.Linear(self.latent_size*2 ,self.latent_size // 2, bias=bias)
 
         self.ActF = nn.LeakyReLU(0.5)
 
@@ -220,17 +220,17 @@ class N3DMAN(nn.Module):
     
 
 class Encoder(nn.Module):
-    def __init__(self, latent_size,device, drop_prob=0.1):
+    def __init__(self, latent_size,device, drop_prob=0.1, bias=True):
         super(Encoder, self).__init__()
         
         self.latent_size = latent_size
         self.device = device
-        in_channels = 9
+        in_channels = 6
         out_channels = self.latent_size
         hidden_features = int(self.latent_size/3)
         Ks = [4,8]
         use_weights = False
-        use_bias = False
+        use_bias = bias
         self.out_channels = out_channels
         self.use_weights = use_weights
         self.output_heat_map = False
@@ -305,7 +305,7 @@ class Encoder(nn.Module):
         return out
 
 class Full3DMAN(nn.Module):
-    def __init__(self, latent_size, scale=False, use_normals=False, device='cpu'):
+    def __init__(self, latent_size, scale=False, use_normals=False, device='cpu', bias= True):
         super(Full3DMAN, self).__init__()
 
         self.latent_size = latent_size
@@ -313,17 +313,17 @@ class Full3DMAN(nn.Module):
         self.device = device
         drop_prob= 0.1
         
-        self.encoder1 = Encoder(self.latent_size, self.device, drop_prob=drop_prob)
-        self.encoder2 = Encoder(self.latent_size, self.device, drop_prob=drop_prob)
+        self.encoder1 = Encoder(self.latent_size, self.device, drop_prob=drop_prob, bias=bias)
+        self.encoder2 = Encoder(self.latent_size, self.device, drop_prob=drop_prob, bias=bias)
         
         self.ActF = nn.LeakyReLU(0.5)
         
-        self.decoder = Decoder( self.latent_size, ffn_hidden=512, drop_prob=drop_prob)
+        self.decoder = Decoder( self.latent_size, ffn_hidden=512, drop_prob=drop_prob, bias=bias)
 
 
-        self.proj_rot = nn.Linear(self.latent_size // 2, 3)
-        self.proj_trans = nn.Linear(self.latent_size // 2, 3)
-        self.proj_sca = nn.Linear(self.latent_size // 2, 1)
+        self.proj_rot = nn.Linear(self.latent_size // 2, 3, bias=bias)
+        self.proj_trans = nn.Linear(self.latent_size // 2, 3, bias=bias)
+        self.proj_sca = nn.Linear(self.latent_size // 2, 1, bias=bias)
 
 
     def forward(self, source, target):
